@@ -26,7 +26,7 @@
   <!-- 2. CHAPTER 1 -->
   <section class="screen" id="ch1">
     <h2>Awal Segalanya</h2>
-    <img src="images/awalan.jpeg" class="main-img">
+    <img src="images/awalan.jpeg" class="main-img" alt="Awal cerita kita">
     <div class="text">
       <p>Mungkin ini bukan momen yang benar benar membuat kita klik.</p>
       <p>Tapi kalau dipikir sekarang, dari sinilah semuanya mulai.</p>
@@ -49,7 +49,7 @@
     <button onclick="next('game2')" id="mem-next" class="hide">Lanjut →</button>
   </section>
 
-  <!-- 4. GAME 2: WORD -->
+  <!-- 4. GAME 2: WORD SCRAMBLE -->
   <section class="screen" id="game2">
     <h2>🎮 Tebak Kata</h2>
     <p>Susun huruf yang diacak!</p>
@@ -58,8 +58,8 @@
       <span id="w-timer">30s</span>
     </div>
     <div class="scramble" id="scramble">LOADING</div>
-    <input type="text" id="w-input" placeholder="Jawaban..." maxlength="8">
-    <button onclick="checkWord()">Cek</button>
+    <input type="text" id="w-input" placeholder="Jawaban..." maxlength="8" autocomplete="off">
+    <button id="w-check-btn" onclick="checkWord()">Cek</button>
     <div id="w-feed" class="hide"></div>
     <div id="w-score" class="score hide">
       <h3>Skor: <span id="w-final">0</span>/3</h3>
@@ -86,9 +86,9 @@
   <section class="screen" id="ch3">
     <h2>Momen-Momen Kita</h2>
     <div class="gallery">
-      <div><img src="images/walk.jpeg"></div>
-      <div><img src="images/bukber.jpeg"></div>
-      <div><img src="images/berdua.jpeg"></div>
+      <div><img src="images/walk.jpeg" alt="Jalan bersama"></div>
+      <div><img src="images/bukber.jpeg" alt="Buka bersama"></div>
+      <div><img src="images/berdua.jpeg" alt="Berdua"></div>
     </div>
     <p class="hl">Setiap foto menyimpan cerita<br>Setiap momen adalah milik kita 💕</p>
     <button onclick="next('game4')">Lanjut →</button>
@@ -118,7 +118,7 @@
     <div class="lock">🔐</div>
     <h2>Tantangan Terakhir</h2>
     <p>Masukkan tanggal spesial kita</p>
-    <input type="text" id="pwd" placeholder="DDMMYY" maxlength="6">
+    <input type="text" id="pwd" placeholder="DDMMYY" maxlength="6" autocomplete="off" inputmode="numeric">
     <p class="hint">💡 Kapan kita mulai? (DDMMYY)</p>
     <button onclick="checkPass()">Buka 🔓</button>
     <p id="err" class="err hide">❌ Salah! Coba lagi</p>
@@ -134,8 +134,8 @@
         <div class="seal">❤️</div>
       </div>
     </div>
-    <p class="hint">Klik amplop untuk buka</p>
-    
+    <p class="hint" id="env-hint">Klik amplop untuk buka</p>
+
     <div class="paper hide" id="paper">
       <h3>Untuk Tiboo 💕</h3>
       <p class="date">5 Maret 2026</p>
