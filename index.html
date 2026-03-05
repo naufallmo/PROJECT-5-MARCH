@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3 Years With You 💕</title>
+  <link rel="icon" type="image/png" href="images/icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+
+  <!-- 1. START -->
+  <section class="screen active" id="start">
+    <h1 class="title">OUR STORY</h1>
+    <p class="subtitle">3 Years of Love</p>
+    <div class="stats">
+      <div><span>3</span>Years</div>
+      <div><span>∞</span>Love</div>
+    </div>
+    <button onclick="startStory()">Mulai ▶</button>
+    <p class="small">Untuk Tiboo • 5 Maret 2026</p>
+  </section>
+
+  <!-- 2. CHAPTER 1 -->
+  <section class="screen" id="ch1">
+    <h2>Awal Segalanya</h2>
+    <img src="images/awalan.jpeg" class="main-img">
+    <div class="text">
+      <p>Mungkin ini bukan momen yang benar benar membuat kita klik.</p>
+      <p>Tapi kalau dipikir sekarang, dari sinilah semuanya mulai.</p>
+      <p>Dari teman, jadi sayang.</p>
+      <p class="hl">3 tahun kemudian, still strong, still us 💕</p>
+    </div>
+    <button onclick="next('game1')">Lanjut →</button>
+  </section>
+
+  <!-- 3. GAME 1: MEMORY -->
+  <section class="screen" id="game1">
+    <h2>🎮 Memory Match</h2>
+    <p>Cocokkan semua kartu!</p>
+    <div class="game-info">
+      <span>Cocok: <b id="match">0/8</b></span>
+      <span>Gerakan: <b id="move">0</b></span>
+      <span>Waktu: <b id="time">0s</b></span>
+    </div>
+    <div class="memory" id="memory"></div>
+    <button onclick="next('game2')" id="mem-next" class="hide">Lanjut →</button>
+  </section>
+
+  <!-- 4. GAME 2: WORD -->
+  <section class="screen" id="game2">
+    <h2>🎮 Tebak Kata</h2>
+    <p>Susun huruf yang diacak!</p>
+    <div class="word-info">
+      <span>Round <b id="w-round">1</b>/3</span>
+      <span id="w-timer">30s</span>
+    </div>
+    <div class="scramble" id="scramble">LOADING</div>
+    <input type="text" id="w-input" placeholder="Jawaban..." maxlength="8">
+    <button onclick="checkWord()">Cek</button>
+    <div id="w-feed" class="hide"></div>
+    <div id="w-score" class="score hide">
+      <h3>Skor: <span id="w-final">0</span>/3</h3>
+      <p id="w-msg"></p>
+    </div>
+    <button onclick="next('game3')" id="w-next" class="hide">Lanjut →</button>
+  </section>
+
+  <!-- 5. GAME 3: WORDLE -->
+  <section class="screen" id="game3">
+    <h2>🎮 Tebak Kata</h2>
+    <p>Tebak kata dalam 6 kesempatan!</p>
+    <div class="wordle-info">
+      <span>Kata <b id="wordle-round">1</b>/3</span>
+      <span>Kesempatan: <b id="wordle-attempt">6</b></span>
+    </div>
+    <div id="wordle-grid" class="wordle-grid"></div>
+    <div id="wordle-keyboard" class="wordle-keyboard"></div>
+    <div id="wordle-msg" class="hide"></div>
+    <button onclick="next('ch3')" id="wordle-next" class="hide">Lanjut →</button>
+  </section>
+
+  <!-- 6. GALLERY -->
+  <section class="screen" id="ch3">
+    <h2>Momen-Momen Kita</h2>
+    <div class="gallery">
+      <div><img src="images/walk.jpeg"></div>
+      <div><img src="images/bukber.jpeg"></div>
+      <div><img src="images/berdua.jpeg"></div>
+    </div>
+    <p class="hl">Setiap foto menyimpan cerita<br>Setiap momen adalah milik kita 💕</p>
+    <button onclick="next('game4')">Lanjut →</button>
+  </section>
+
+  <!-- 7. GAME 4: RATING -->
+  <section class="screen" id="game4">
+    <h2>🎮 Kasih Rating!</h2>
+    <p>Sekarang giliran kamu 😊</p>
+    <div class="rating">
+      <div><h4>💬 Komunikasi</h4><input type="range" id="r1" min="1" max="10" value="5"><span id="r1v">5</span></div>
+      <div><h4>⏰ Quality Time</h4><input type="range" id="r2" min="1" max="10" value="5"><span id="r2v">5</span></div>
+      <div><h4>💕 Romance</h4><input type="range" id="r3" min="1" max="10" value="5"><span id="r3v">5</span></div>
+      <div><h4>🤝 Pengertian</h4><input type="range" id="r4" min="1" max="10" value="5"><span id="r4v">5</span></div>
+      <div><h4>🌟 Future</h4><input type="range" id="r5" min="1" max="10" value="5"><span id="r5v">5</span></div>
+    </div>
+    <div class="total">
+      <h3>Total: <span id="total">25</span>/50</h3>
+      <p id="r-msg">Geser untuk kasih rating!</p>
+    </div>
+    <button onclick="submitRating()">Submit</button>
+    <button onclick="next('pass')" id="r-next" class="hide">Lanjut →</button>
+  </section>
+
+  <!-- 8. PASSWORD -->
+  <section class="screen" id="pass">
+    <div class="lock">🔐</div>
+    <h2>Tantangan Terakhir</h2>
+    <p>Masukkan tanggal spesial kita</p>
+    <input type="text" id="pwd" placeholder="DDMMYY" maxlength="6">
+    <p class="hint">💡 Kapan kita mulai? (DDMMYY)</p>
+    <button onclick="checkPass()">Buka 🔓</button>
+    <p id="err" class="err hide">❌ Salah! Coba lagi</p>
+  </section>
+
+  <!-- 9. LETTER -->
+  <section class="screen" id="letter">
+    <div class="envelope" id="env" onclick="openLetter()">
+      <div class="flap"></div>
+      <div class="body">
+        <p>Untuk: Tiboo 💕</p>
+        <p>Dari: Naufal</p>
+        <div class="seal">❤️</div>
+      </div>
+    </div>
+    <p class="hint">Klik amplop untuk buka</p>
+    
+    <div class="paper hide" id="paper">
+      <h3>Untuk Tiboo 💕</h3>
+      <p class="date">5 Maret 2026</p>
+      <div class="content">
+        <p><i>Happy Anniversary Sayang</i></p>
+        <p>Aku kadang masih ga nyangka kalau ini semua bisa berawal dari yang sekelas, satu lomba. Awalnya hanya kebetulan, cuma karna pingin aktif di kelas, cuma karna dipaksa. Tapi ternyata dari hal yang simpel itu, kita bisa sampai sekarang.</p>
+        <p>Aku masih inget banget momen yang menurutku paling lucu. Mungkin menurut kamu momen ini sangat memalukan. Kamu yang biasanya rame banget, bisa ngobrol sama siapa aja tanpa mikir panjang, tiba tiba malah malu sendiri waktu mau nanya sesuatu ke aku. Padahal cuma nanya absen doang.</p>
+        <p>Yang aku suka dari cerita kita adalah satu hal. Kita ga nyangka bakal saling suka. Dan itu juga bukan karena ada salah satu dari kita yang kejar kejaran. Semuanya jalan pelan pelan. Dari chat yang awalnya hanya sekedar menanyakan tugas, dari obrolan kecil yang makin lama makin panjang, sampai akhirnya kita sadar kalau ternyata kita sama sama nyaman.</p>
+        <p>Dan menurutku itu yang bikin semuanya terasa lebih tulus. Karena semuanya tumbuh step by step, bukan asal pilih.</p>
+        <p>Aku juga terimakasih banyak sama kamu untuk semua hal kecil yang mungkin kamu ga sadar. Cara kamu perhatian. Cara kamu cerita apa aja ke aku. Cara kamu tetap jadi diri kamu yang selalu penuh energi itu.</p>
+        <p>Kalau dipikir pikir, dari satu momen sederhana dulu, sekarang kamu malah jadi bagian dari hidupku.</p>
+        <p>Aku harap kita bisa terus bareng selamanya.</p>
+        <p class="hl">I love you so much, sayang. I love you more than words can say 💕</p>
+        <p class="sign">Selamanya milikmu,<br>Naufal</p>
+      </div>
+      <button onclick="next('final')">Selesai →</button>
+    </div>
+  </section>
+
+  <!-- 10. FINAL -->
+  <section class="screen" id="final">
+    <div class="confetti" id="confetti"></div>
+    <h1>🎉 Selamat! 🎉</h1>
+    <p>Kamu menyelesaikan semua!</p>
+    <div class="badges">
+      <span>🏆 Memory</span>
+      <span>📝 Word</span>
+      <span>🎯 Wordle</span>
+      <span>⭐ Rating</span>
+      <span>💕 3 Years</span>
+    </div>
+    <div class="date-box">
+      <div>5</div>
+      <div>MARET</div>
+      <div>2026</div>
+    </div>
+    <p class="hl">"3 years down, forever to go"</p>
+    <button onclick="restart()">Main Lagi ↻</button>
+  </section>
+
+  <!-- MUSIC -->
+  <audio id="bgm" loop>
+    <source src="audios/jatuhSuka.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
